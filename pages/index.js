@@ -185,41 +185,6 @@ export default function Home() {
           >
             <h1>A COROA RESISTE: O DIRETÓRIO MONARQUISTA</h1>
 
-            <figure className="retrato">
-              <img
-                className="foto"
-                src="/Visconde-de-Ouro-Preto.jpeg"
-                alt="Visconde de Ouro Preto, fundador do Diretório Monárquico do Brasil"
-                width="3000"
-                height="3000"
-              />
-              <figcaption>
-                Visconde de Ouro Preto, fundador do Diretório Monárquico do
-                Brasil
-              </figcaption>
-            </figure>
-
-            <figure className="retrato">
-              <img
-                className="foto"
-                src="/João-Alfredo-Correia-De-Oliveira.jpeg"
-                alt="João Alfredo Correia de Oliveira"
-              />
-              <figcaption>João Alfredo Correia de Oliveira</figcaption>
-            </figure>
-
-            <figure className="retrato">
-              <img
-                className="foto"
-                src="/Carlos-De-Laet.jpeg"
-                alt="Carlos de Laet, membro do Diretório Monárquico e jornalista da causa restauradora"
-              />
-              <figcaption>
-                Carlos de Laet, membro do Diretório Monárquico e jornalista da
-                causa restauradora
-              </figcaption>
-            </figure>
-
             <p>Em 15 de outubro de 1896, monarquistas reunidos em São Paulo para celebrar os vinte e um anos de Pedro de Alcântara, primogênito da princesa Isabel, enviaram um telegrama ao Rio de Janeiro. O destino era a redação do jornal Liberdade, à Rua da Assembleia, número 119. Os destinatários apareciam pelos nomes com que a vida pública os tornara conhecidos: Ouro Preto, João Alfredo, Andrade Figueira, Lafayette e Carlos Afonso. A mensagem saudava-os como chefes monarquistas e lhes manifestava solidariedade. A resposta, publicada no dia seguinte, trazia uma assinatura coletiva: o Diretório. [1]</p>
 
             <p>Nesse pequeno intercâmbio encontra-se uma imagem concreta da organização. Havia dirigentes reconhecidos, um endereço de contato e correligionários em outra unidade da Federação. A Monarquia perdera suas instituições de governo, mas parte dos homens que a haviam servido continuava a procurar meios de intervir nos destinos do país. A redação de um jornal tornava-se um dos lugares dessa permanência.</p>
@@ -303,7 +268,63 @@ export default function Home() {
             aria-labelledby="aba-2"
             hidden={aba !== 2}
           >
-            <p className="vazio">Conteúdo em breve.</p>
+            <figure className="retrato">
+              <img
+                className="foto"
+                src="/Visconde-de-Ouro-Preto.jpeg"
+                alt="Visconde de Ouro Preto, fundador do Diretório Monárquico do Brasil"
+                width="3000"
+                height="3000"
+              />
+              <figcaption>
+                Visconde de Ouro Preto, fundador do Diretório Monárquico do
+                Brasil
+              </figcaption>
+            </figure>
+
+            <figure className="retrato">
+              <img
+                className="foto"
+                src="/João-Alfredo-Correia-De-Oliveira.jpeg"
+                alt="João Alfredo Correia de Oliveira"
+              />
+              <figcaption>João Alfredo Correia de Oliveira</figcaption>
+            </figure>
+
+            <figure className="retrato">
+              <img
+                className="foto"
+                src="/Carlos-De-Laet.jpeg"
+                alt="Carlos de Laet, membro do Diretório Monárquico e jornalista da causa restauradora"
+              />
+              <figcaption>
+                Carlos de Laet, membro do Diretório Monárquico e jornalista da
+                causa restauradora
+              </figcaption>
+            </figure>
+
+            <figure className="retrato">
+              <img 
+                className="foto"
+                src="/Conselheiro-Lafaiate.jpeg"
+                alt="Conselheiro Lafaiate"
+              />
+
+              <figcaption>
+                Conselheiro Lafaiate
+              </figcaption>
+            </figure>
+
+            <figure className="retrato">
+              <img
+                className="foto"
+                src="/Carlos-Egert.jpeg"
+                alt="Carlos Egert, refundador do Diretório Monarquico"
+              />
+              <figcaption>
+                Carlos Egert, refundador do Diretório Monarquico
+              </figcaption>
+            </figure>
           </div>
 
           <div

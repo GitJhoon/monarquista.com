@@ -14,6 +14,14 @@ export default function Home() {
 
       <main className="page">
         <article className="texto">
+          <img
+            className="brasao"
+            src="/brasao.png"
+            alt="Brasão do Império do Brasil"
+            width="784"
+            height="1000"
+          />
+
           <h1>Uma história que atravessa gerações</h1>
 
           <p>
@@ -175,8 +183,8 @@ export default function Home() {
           background: var(--fundo);
           font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
             "Book Antiqua", Georgia, serif;
-          font-size: 1.125rem;
-          line-height: 1.75;
+          font-size: 1rem; /* era 1.125rem */
+          line-height: 1.7;
           -webkit-font-smoothing: antialiased;
         }
 
@@ -185,8 +193,20 @@ export default function Home() {
         }
 
         .texto {
-          max-width: 40rem;
+          max-width: 44rem;
           margin: 0 auto;
+          padding: 3rem 2.5rem;
+          border: 2px solid var(--ouro); /* borda dourada */
+          outline: 1px solid var(--ouro); /* filete externo, moldura dupla */
+          outline-offset: 6px;
+        }
+
+        .brasao {
+          display: block;
+          width: 100%;
+          max-width: 11rem;
+          height: auto;
+          margin: 0 auto 2.5rem;
         }
 
         h1 {
@@ -210,7 +230,7 @@ export default function Home() {
           padding: 0 0 0 1.5rem;
           border-left: 3px solid var(--ouro);
           color: var(--verde);
-          font-size: 1.5rem;
+          font-size: 1.3rem; /* era 1.5rem */
           font-style: italic;
           line-height: 1.45;
         }
@@ -239,10 +259,13 @@ export default function Home() {
 
         @media (max-width: 480px) {
           body {
-            font-size: 1.0625rem;
+            font-size: 0.9375rem; /* era 1.0625rem */
           }
           .page {
-            padding-top: 2.5rem;
+            padding: 2rem 1.25rem;
+          }
+          .texto {
+            padding: 1.75rem 1.25rem;
           }
         }
       `}</style>

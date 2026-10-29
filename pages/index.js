@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 
-const ABAS = ["Inicio", "Mídias", "Diretório"];
+const ABAS = ["Inicio", "Diretório", "Fundadores", "Midias"];
 
 export default function Home() {
   const [aba, setAba] = useState(0);
@@ -178,10 +178,10 @@ export default function Home() {
           </div>
 
           <div
-            id="painel-2"
+            id="painel-1"
             role="tabpanel"
-            aria-labelledby="aba-2"
-            hidden={aba !== 2}
+            aria-labelledby="aba-1"
+            hidden={aba !== 1}
           >
             <h1>A COROA RESISTE: O DIRETÓRIO MONARQUISTA</h1>
 
@@ -295,6 +295,24 @@ export default function Home() {
             <p>15. Arquivo Nacional. Caderno MAPA n. 6, quadro de titulares da Guerra; datas recuperadas em busca. https://mapa.an.gov.br/images/publicacoes/CadernoMAPA6/files/assets/basic-html/page-160.html</p>
 
             <p>16. Academia Brasileira de Letras. Biografia de Carlos de Laet. https://www2.academia.org.br/academicos/carlos-de-laet/biografia</p>
+          </div>
+
+          <div
+            id="painel-2"
+            role="tabpanel"
+            aria-labelledby="aba-2"
+            hidden={aba !== 2}
+          >
+            <p className="vazio">Conteúdo em breve.</p>
+          </div>
+
+          <div
+            id="painel-3"
+            role="tabpanel"
+            aria-labelledby="aba-3"
+            hidden={aba !== 3}
+          >
+            <p className="vazio">Conteúdo em breve.</p>
           </div>
 
           <footer>
@@ -415,7 +433,7 @@ export default function Home() {
           gap: 0.25rem;
           margin: 0 0 2rem;
           border-bottom: 1px solid var(--suave);
-          overflow-x: auto;
+          flex-wrap: wrap;
         }
 
         .aba {
@@ -502,6 +520,14 @@ export default function Home() {
           }
           .texto {
             padding: 1.75rem 1.25rem;
+          }
+          .abas {
+            gap: 0;
+          }
+          .aba {
+            flex: 1 1 auto;
+            padding: 0.65rem 0.6rem;
+            font-size: 0.95rem;
           }
         }
       `}</style>

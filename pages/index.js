@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 
-const ABAS = ["Inicio", "Diretório", "Fundadores", "Midias"];
+const ABAS = ["Início", "Diretório", "Fundadores", "Mídias", "Quem somos"];
 
 export default function Home() {
   const [aba, setAba] = useState(0);
@@ -315,6 +315,16 @@ export default function Home() {
             <p className="vazio">Conteúdo em breve.</p>
           </div>
 
+          <div
+            id="painel-4"
+            role="tabpanel"
+            aria-labelledby="aba-4"
+            hidden={aba !== 4}
+          >
+            <h1>Quem somos</h1>
+            <p className="vazio">Conteúdo em breve.</p>
+          </div>
+
           <footer>
             <p>
               Para apresentar seu círculo, divulgar uma obra, compartilhar
@@ -522,12 +532,14 @@ export default function Home() {
             padding: 1.75rem 1.25rem;
           }
           .abas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 0;
           }
           .aba {
-            flex: 1 1 auto;
-            padding: 0.65rem 0.6rem;
+            padding: 0.65rem 0.4rem;
             font-size: 0.95rem;
+            text-align: center;
           }
         }
       `}</style>

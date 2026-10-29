@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 
-const ABAS = ["Inicio", "Sobre", "Contato"];
+const ABAS = ["Inicio", "Mídias", "Diretório"];
 
 export default function Home() {
   const [aba, setAba] = useState(0);

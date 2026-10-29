@@ -24,6 +24,7 @@ export default function Home() {
           content="A trajetória dos monarquistas brasileiros desde 1889: instituições, iniciativas, divergências e reencontros."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/png" href="/brasao.png"></link>
       </Head>
 
       <main className="page">

@@ -1,6 +1,20 @@
 import Head from "next/head";
+import { useState } from "react";
+
+const ABAS = ["Inicio", "Sobre", "Contato"];
 
 export default function Home() {
+  const [aba, setAba] = useState(0);
+
+  function aoTeclar(e) {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    const passo = e.key === "ArrowRight" ? 1 : -1;
+    const proxima = (aba + passo + ABAS.length) % ABAS.length;
+    setAba(proxima);
+    document.getElementById(`aba-${proxima}`)?.focus();
+  }
+
   return (
     <>
       <Head>
@@ -14,6 +28,24 @@ export default function Home() {
 
       <main className="page">
         <article className="texto">
+          <div className="abas" role="tablist" onKeyDown={aoTeclar}>
+            {ABAS.map((titulo, i) => (
+              <button
+                key={titulo}
+                id={`aba-${i}`}
+                role="tab"
+                type="button"
+                aria-selected={aba === i}
+                aria-controls={`painel-${i}`}
+                tabIndex={aba === i ? 0 : -1}
+                className={aba === i ? "aba ativa" : "aba"}
+                onClick={() => setAba(i)}
+              >
+                {titulo}
+              </button>
+            ))}
+          </div>
+
           <img
             className="brasao"
             src="/brasao.png"
@@ -23,6 +55,13 @@ export default function Home() {
           />
 
           <h1>Uma história que atravessa gerações</h1>
+
+          <div
+            id="painel-0"
+            role="tabpanel"
+            aria-labelledby="aba-0"
+            hidden={aba !== 0}
+          >
 
           <p>
             Em novembro de 1889, a queda do Império abriu um longo capítulo de
@@ -134,6 +173,20 @@ export default function Home() {
             cuidado e acrescenta a ela o próprio trabalho.
           </blockquote>
 
+          </div>
+
+          {ABAS.slice(1).map((_, k) => (
+            <div
+              key={k + 1}
+              id={`painel-${k + 1}`}
+              role="tabpanel"
+              aria-labelledby={`aba-${k + 1}`}
+              hidden={aba !== k + 1}
+            >
+              <p className="vazio">Conteúdo em breve.</p>
+            </div>
+          ))}
+
           <footer>
             <p>
               Para apresentar seu círculo, divulgar uma obra, compartilhar
@@ -218,6 +271,51 @@ export default function Home() {
           font-weight: 700;
           line-height: 1.05;
           letter-spacing: -0.02em;
+        }
+
+        .abas {
+          display: flex;
+          gap: 0.25rem;
+          margin: 0 0 2rem;
+          border-bottom: 1px solid var(--suave);
+          overflow-x: auto;
+        }
+
+        .aba {
+          flex: 0 0 auto;
+          padding: 0.75rem 1.25rem;
+          border: 0;
+          border-bottom: 3px solid transparent;
+          margin-bottom: -1px;
+          background: none;
+          color: var(--suave);
+          font: inherit;
+          font-size: 1rem;
+          cursor: pointer;
+        }
+
+        .aba:hover {
+          color: var(--verde);
+        }
+
+        .aba.ativa {
+          color: var(--verde);
+          font-weight: 700;
+          border-bottom-color: var(--ouro);
+        }
+
+        .aba:focus-visible {
+          outline: 3px solid var(--ouro);
+          outline-offset: -3px;
+        }
+
+        .vazio {
+          color: var(--suave);
+          font-style: italic;
+        }
+
+        [hidden] {
+          display: none !important;
         }
 
         p {

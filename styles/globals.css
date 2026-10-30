@@ -1,0 +1,331 @@
+:root {
+  --fundo: #f2f4ef;
+  --texto: #1d2a23;
+  --verde: #1f4d3a;
+  --ouro: #b08a2e;
+  --suave: #55645b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #14201a;
+    --texto: #e6ebe4;
+    --verde: #8fc3a5;
+    --ouro: #d3b25a;
+    --suave: #a3b2a8;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--fundo);
+}
+
+body {
+  margin: 0;
+  color: var(--texto);
+  background: var(--fundo);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+    "Book Antiqua", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  padding: 4rem 1.5rem 5rem;
+}
+
+.texto {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  border: 2px solid var(--ouro);
+  outline: 1px solid var(--ouro);
+  outline-offset: 6px;
+}
+
+.brasao {
+  display: block;
+  width: 100%;
+  max-width: 11rem;
+  height: auto;
+  margin: 0 auto 2.5rem;
+}
+
+.retrato {
+  margin: 0 0 2.5rem;
+  text-align: center;
+}
+
+/* Sem aspect-ratio e sem "cover": a foto aparece inteira,
+   na proporção original, qualquer que seja o formato. */
+.foto {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+  max-height: 36rem;
+  object-fit: contain;
+  margin: 0 auto;
+  padding: 0.5rem;
+  border: 2px solid var(--ouro);
+  background: var(--fundo);
+}
+
+.retrato figcaption {
+  margin-top: 0.75rem;
+  color: var(--suave);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+h1 {
+  margin: 0 0 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid var(--ouro);
+  color: var(--verde);
+  font-size: clamp(2.5rem, 8vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* Título de uma notícia aberta: menor que o título das abas */
+h1.titulo-noticia {
+  font-size: clamp(1.9rem, 6vw, 2.75rem);
+  line-height: 1.15;
+}
+
+/* Subtítulos de seção (aba Quem somos) */
+h2 {
+  margin: 2.5rem 0 1rem;
+  color: var(--verde);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.abas {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0 0 2rem;
+  border-bottom: 1px solid var(--suave);
+  flex-wrap: wrap;
+}
+
+.aba {
+  flex: 0 0 auto;
+  padding: 0.75rem 1.25rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  color: var(--suave);
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.aba:hover {
+  color: var(--verde);
+}
+
+.aba.ativa {
+  color: var(--verde);
+  font-weight: 700;
+  border-bottom-color: var(--ouro);
+}
+
+.aba:focus-visible {
+  outline: 3px solid var(--ouro);
+  outline-offset: -3px;
+}
+
+/* Lista de notícias (aba Midias) */
+.noticias {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.noticias li + li {
+  margin-top: 1.25rem;
+}
+
+.cartao {
+  display: block;
+  width: 100%;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border: 1px solid var(--ouro);
+  border-left: 6px solid var(--ouro);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cartao:hover {
+  background: rgba(176, 138, 46, 0.1);
+}
+
+.cartao:focus-visible {
+  outline: 3px solid var(--ouro);
+  outline-offset: 3px;
+}
+
+.cartao-titulo {
+  display: block;
+  color: var(--verde);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cartao-autor {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--suave);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.cartao-resumo {
+  display: block;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+}
+
+.autoria {
+  margin: -1rem 0 2rem;
+  color: var(--suave);
+  font-style: italic;
+}
+
+sup {
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+.cartao-ler {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--verde);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Botão de voltar dentro da notícia */
+.voltar {
+  display: inline-block;
+  margin: 0 0 2rem;
+  padding: 0.5rem 0;
+  border: 0;
+  background: none;
+  color: var(--verde);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.voltar:focus-visible {
+  outline: 3px solid var(--ouro);
+  outline-offset: 3px;
+}
+
+.voltar-fim {
+  margin: 1.5rem 0 0;
+}
+
+.vazio {
+  color: var(--suave);
+  font-style: italic;
+}
+
+/* Destaque do telefone (aba Quem somos) */
+.contato {
+  padding: 0.75rem 1.25rem;
+  border-left: 4px solid var(--ouro);
+  background: rgba(176, 138, 46, 0.1);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+p {
+  margin: 0 0 1.4rem;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+
+blockquote {
+  margin: 3rem 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 3px solid var(--ouro);
+  color: var(--verde);
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--suave);
+  color: var(--suave);
+}
+
+footer p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--verde);
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--ouro);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.9375rem;
+  }
+  .page {
+    padding: 2rem 1.25rem;
+  }
+  .texto {
+    padding: 1.75rem 1.25rem;
+  }
+  .abas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .aba {
+    padding: 0.65rem 0.4rem;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  .cartao {
+    padding: 1.25rem 1rem 1rem;
+  }
+  .cartao-titulo {
+    font-size: 1.3rem;
+  }
+}

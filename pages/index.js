@@ -3,20 +3,34 @@ import { useState } from "react";
 
 import AbaInicio from "../components/AbaInicio";
 import AbaMidias from "../components/AbaMidias";
+import AbaNoticias from "../components/AbaNoticias";
 import AbaDiretorio from "../components/AbaDiretorio";
 import AbaQuemSomos from "../components/AbaQuemSomos";
 import AbaLiteratura from "../components/AbaLiteratura";
 
-const ABAS = ["Início", "Midias", "Diretório", "Quem somos", "Literatura"];
+const ABAS = ["Início", "Midias", "Notícias", "Diretório", "Quem somos", "Literatura"];
 const ABA_MIDIAS = 1;
+const ABA_NOTICIAS = 2;
 
 export default function Home() {
   const [aba, setAba] = useState(0);
-  const [noticia, setNoticia] = useState(null);
+  const [midia, setMidia] = useState(null);     // item aberto na aba Mídias
+  const [noticia, setNoticia] = useState(null); // item aberto na aba Notícias
 
   function irParaAba(i) {
     setAba(i);
-    if (i === ABA_MIDIAS) setNoticia(null);
+    if (i === ABA_MIDIAS) setMidia(null);
+    if (i === ABA_NOTICIAS) setNoticia(null);
+  }
+
+  function abrirMidia(id) {
+    setMidia(id);
+    window.scrollTo({ top: 0 });
+  }
+
+  function voltarParaMidias() {
+    setMidia(null);
+    window.scrollTo({ top: 0 });
   }
 
   function abrirNoticia(id) {
@@ -24,7 +38,7 @@ export default function Home() {
     window.scrollTo({ top: 0 });
   }
 
-  function voltarParaLista() {
+  function voltarParaNoticias() {
     setNoticia(null);
     window.scrollTo({ top: 0 });
   }
@@ -42,13 +56,19 @@ export default function Home() {
     <AbaInicio key="inicio" />,
     <AbaMidias
       key="midias"
+      noticia={midia}
+      abrirNoticia={abrirMidia}
+      voltarParaLista={voltarParaMidias}
+    />,
+    <AbaNoticias
+      key="noticias"
       noticia={noticia}
       abrirNoticia={abrirNoticia}
-      voltarParaLista={voltarParaLista}
+      voltarParaLista={voltarParaNoticias}
     />,
     <AbaDiretorio key="diretorio" />,
     <AbaQuemSomos key="quem-somos" />,
-    <AbaLiteratura key="literatura"/>
+    <AbaLiteratura key="literatura" />,
   ];
 
   return (

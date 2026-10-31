@@ -61,6 +61,17 @@ export default function AbaDiretorio() {
         </figcaption>
       </figure>
 
+      <figure className="retrato">
+        <img
+          className="foto"
+          src="/Patrick-Luiz-Da-Silva-Campos.jpeg"
+          alt="Patrick Luiz da Silva Campos, refundador do Diretório Monárquico"
+        />
+        <figcaption>
+          Patrick Luiz da Silva Campos, refundador do Diretório Monárquico
+        </figcaption>
+      </figure>
+
       <TextoCoroaResiste />
     </>
   );

@@ -1,3 +1,4 @@
+import { paraItemDaLista } from "./ArtigoSimples";
 import MonarquiaParlamentar2026 from "./noticias/MonarquiaParlamentar2026";
 
 export const LISTA_NOTICIAS = [
@@ -13,19 +14,29 @@ export const LISTA_NOTICIAS = [
   },
 ];
 
-export default function AbaNoticias({ noticia, abrirNoticia, voltarParaLista }) {
-  const aberta = LISTA_NOTICIAS.find((n) => n.id === noticia);
+export default function AbaNoticias({
+  noticia,
+  abrirNoticia,
+  voltarParaLista,
+  extras = [],
+}) {
+  // Publicações feitas pelo painel /admin aparecem primeiro.
+  const lista = [...extras.map(paraItemDaLista), ...LISTA_NOTICIAS];
+  const aberta = lista.find((n) => n.id === noticia);
 
   if (!aberta) {
     return (
       <ul className="noticias">
-        {LISTA_NOTICIAS.map((n) => (
+        {lista.map((n) => (
           <li key={n.id}>
             <button
               type="button"
               className="cartao"
               onClick={() => abrirNoticia(n.id)}
             >
+              {n.imagem && (
+                <img className="cartao-imagem" src={n.imagem} alt="" />
+              )}
               <span className="cartao-titulo">{n.titulo}</span>
               {(n.autor || n.data) && (
                 <span className="cartao-autor">

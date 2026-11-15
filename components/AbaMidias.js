@@ -1,3 +1,4 @@
+import { paraItemDaLista } from "./ArtigoSimples";
 import CoroaResiste from "./artigos/CoroaResiste";
 import PoderReal from "./artigos/PoderReal";
 
@@ -19,21 +20,35 @@ export const NOTICIAS = [
   },
 ];
 
-export default function AbaMidias({ noticia, abrirNoticia, voltarParaLista }) {
-  const aberta = NOTICIAS.find((n) => n.id === noticia);
+export default function AbaMidias({
+  noticia,
+  abrirNoticia,
+  voltarParaLista,
+  extras = [],
+}) {
+  // Publicações feitas pelo painel /admin aparecem primeiro.
+  const lista = [...extras.map(paraItemDaLista), ...NOTICIAS];
+  const aberta = lista.find((n) => n.id === noticia);
 
   if (!aberta) {
     return (
       <ul className="noticias">
-        {NOTICIAS.map((n) => (
+        {lista.map((n) => (
           <li key={n.id}>
             <button
               type="button"
               className="cartao"
               onClick={() => abrirNoticia(n.id)}
             >
+              {n.imagem && (
+                <img className="cartao-imagem" src={n.imagem} alt="" />
+              )}
               <span className="cartao-titulo">{n.titulo}</span>
-              {n.autor && <span className="cartao-autor">{n.autor}</span>}
+              {(n.autor || n.data) && (
+                <span className="cartao-autor">
+                  {[n.autor, n.data].filter(Boolean).join(" · ")}
+                </span>
+              )}
               <span className="cartao-resumo">{n.resumo}</span>
               <span className="cartao-ler">Ler o artigo completo</span>
             </button>

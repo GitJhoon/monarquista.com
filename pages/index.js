@@ -7,12 +7,24 @@ import AbaNoticias from "../components/AbaNoticias";
 import AbaDiretorio from "../components/AbaDiretorio";
 import AbaQuemSomos from "../components/AbaQuemSomos";
 import AbaLiteratura from "../components/AbaLiteratura";
+import { lerSecao } from "../lib/conteudo";
 
 const ABAS = ["Início", "Midias", "Notícias", "Diretório", "Quem somos", "Literatura"];
 const ABA_MIDIAS = 1;
 const ABA_NOTICIAS = 2;
 
-export default function Home() {
+// Publicações do painel /admin, lidas quando o site é gerado.
+// Cada publicação nova gera uma nova versão do site na Vercel.
+export async function getStaticProps() {
+  return {
+    props: {
+      noticiasExtras: lerSecao("noticias"),
+      midiasExtras: lerSecao("midias"),
+    },
+  };
+}
+
+export default function Home({ noticiasExtras = [], midiasExtras = [] }) {
   const [aba, setAba] = useState(0);
   const [midia, setMidia] = useState(null);     // item aberto na aba Mídias
   const [noticia, setNoticia] = useState(null); // item aberto na aba Notícias
@@ -59,12 +71,14 @@ export default function Home() {
       noticia={midia}
       abrirNoticia={abrirMidia}
       voltarParaLista={voltarParaMidias}
+      extras={midiasExtras}
     />,
     <AbaNoticias
       key="noticias"
       noticia={noticia}
       abrirNoticia={abrirNoticia}
       voltarParaLista={voltarParaNoticias}
+      extras={noticiasExtras}
     />,
     <AbaDiretorio key="diretorio" />,
     <AbaQuemSomos key="quem-somos" />,
